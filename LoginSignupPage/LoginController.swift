@@ -54,11 +54,11 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        
+        print("Login")
     }
     
     @objc func handleDontHaveAnAccount() {
-        
+        print("Register")
     }
     
     fileprivate func setupViews() {
