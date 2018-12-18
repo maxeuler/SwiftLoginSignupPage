@@ -25,7 +25,8 @@ class LoginController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textField.font = UIFont.systemFont(ofSize: 14)
-        textField.tintColor = .lightGray  
+        textField.tintColor = .lightGray
+        textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
         return textField
     }()
 
@@ -37,6 +38,7 @@ class LoginController: UIViewController {
         textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
         textField.font = UIFont.systemFont(ofSize: 14)
         textField.tintColor = .lightGray
+        textField.addTarget(self, action: #selector(handleInputChange), for: .editingChanged)
         return textField
     }()
     
@@ -48,6 +50,7 @@ class LoginController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        button.isEnabled = false
         return button
     }()
     
@@ -64,6 +67,18 @@ class LoginController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+    }
+    
+    @objc func handleInputChange() {
+        let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+        
+        if (isFormValid) {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .gray
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .lightGray
+        }
     }
     
     @objc func handleLogin() {

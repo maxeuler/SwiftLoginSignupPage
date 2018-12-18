@@ -16,7 +16,10 @@ class HomeController: UIViewController {
         let label = UILabel()
         label.text = "Welcome to Application XY"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 28)
+        label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 0
         return label
     }()
     
@@ -40,6 +43,7 @@ class HomeController: UIViewController {
     
     fileprivate func setupViews() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(handleLogout))
+        navigationItem.rightBarButtonItem?.tintColor = .gray
         view.backgroundColor = .white
         
         view.addSubview(welcomeLabel)
