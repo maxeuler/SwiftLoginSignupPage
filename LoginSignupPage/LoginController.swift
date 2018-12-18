@@ -14,6 +14,8 @@ class LoginController: UIViewController {
         let label = UILabel()
         label.text = "Login"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 28)
+        label.textColor = .lightGray
         return label
     }()
     
@@ -21,6 +23,9 @@ class LoginController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.tintColor = .lightGray  
         return textField
     }()
 
@@ -29,19 +34,28 @@ class LoginController: UIViewController {
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.tintColor = .lightGray
         return textField
     }()
     
     let loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
     }()
     
     let dontHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Register", for: .normal)
+        let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Sign Up", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handleDontHaveAnAccount), for: .touchUpInside)
         return button
     }()
@@ -53,7 +67,7 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
-        print("Login")
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleDontHaveAnAccount() {

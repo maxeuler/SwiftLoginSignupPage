@@ -14,6 +14,8 @@ class RegisterController: UIViewController {
         let label = UILabel()
         label.text = "Register"
         label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 28)
+        label.textColor = .lightGray
         return label
     }()
     
@@ -21,6 +23,9 @@ class RegisterController: UIViewController {
         let textField = UITextField()
         textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.tintColor = .lightGray  
         return textField
     }()
     
@@ -29,6 +34,9 @@ class RegisterController: UIViewController {
         textField.placeholder = "Password"
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.tintColor = .lightGray
         return textField
     }()
     
@@ -37,19 +45,28 @@ class RegisterController: UIViewController {
         textField.placeholder = "Confirm Password"
         textField.isSecureTextEntry = true
         textField.borderStyle = .roundedRect
+        textField.backgroundColor = UIColor(white: 0, alpha: 0.03)
+        textField.font = UIFont.systemFont(ofSize: 14)
+        textField.tintColor = .lightGray
         return textField
     }()
     
     let registerButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Register", for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 5
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(handleRegister), for: .touchUpInside)
         return button
     }()
     
     let alreadyHaveAnAccountButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Login", for: .normal)
+        let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        attributedTitle.append(NSAttributedString(string: "Login", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray]))
+        button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(handleAlreadyHaveAnAccount), for: .touchUpInside)
         return button
     }()
@@ -61,7 +78,7 @@ class RegisterController: UIViewController {
     }
     
     @objc func handleRegister() {
-        
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func handleAlreadyHaveAnAccount() {
