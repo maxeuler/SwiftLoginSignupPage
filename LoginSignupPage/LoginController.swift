@@ -61,6 +61,8 @@ class LoginController: UIViewController {
         print("Register")
     }
     
+    
+    // Add all UI elements to the view and set the contraints
     fileprivate func setupViews() {
         view.backgroundColor = .white
         
