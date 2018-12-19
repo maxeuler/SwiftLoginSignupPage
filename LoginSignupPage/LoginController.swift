@@ -63,12 +63,13 @@ class LoginController: UIViewController {
         return button
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
     }
     
+    
+    // check the state of the textfield and enable or disable login button
     @objc func handleInputChange() {
         let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
@@ -82,14 +83,15 @@ class LoginController: UIViewController {
     }
     
     @objc func handleLogin() {
+        // TODO check if user exists and password is correct
         self.dismiss(animated: true, completion: nil)
     }
     
+    // show register view
     @objc func handleDontHaveAnAccount() {
         let registerController = RegisterController()
         navigationController?.pushViewController(registerController, animated: true)
     }
-    
     
     // Add all UI elements to the view and set the contraints
     fileprivate func setupViews() {
@@ -115,7 +117,5 @@ class LoginController: UIViewController {
         dontHaveAnAccountButton.anchor(top: nil, left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 20, paddingBottom: 10, paddingRight: 20, width: 0, height: 40)
         
     }
-
-
 }
 

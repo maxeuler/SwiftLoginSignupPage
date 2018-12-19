@@ -77,10 +77,10 @@ class RegisterController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
     }
     
+    // check the state of the textfield and enable or disable register button
     @objc func handleInputChange() {
         let isFormValid = emailTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0 && confirmPasswordTextField.text?.count ?? 0 > 0
         
@@ -94,13 +94,16 @@ class RegisterController: UIViewController {
     }
     
     @objc func handleRegister() {
+        // TODO save user data to database and log user in
         self.dismiss(animated: true, completion: nil)
     }
     
+    // show login view
     @objc func handleAlreadyHaveAnAccount() {
         navigationController?.popViewController(animated: true)
     }
     
+    // Add all UI elements to the view and set the contraints
     fileprivate func setupViews() {
         view.backgroundColor = .white
         
